@@ -18,18 +18,21 @@ histogram('BinCounts', histData, 'BinEdges', edges);
 title("Histogram of the grades");
 grid on;
 
-%% 2->4) compute average grade, standard deviation and median
-[average, std, median, cumFreq] = histogramStats(histData, edges)
+%% 2) compute average grade
 
-% average: 4.5, std: 0.8 -> correct
-% median: 4.2 -> correct
+binsMiddle = edges(2:end) - width/2;
+average = sum(binsMiddle.*histData)/numberStudents
+
+%% 3) standard deviation
+
+std = std(histData) % around 2 -> this is impossible
+
+
+%% 4) median grade
+% the median is at 4 because 
+
 
 %% 5) note modale
 % the mode is the most frequent class
 index = find(histData == max(histData));
-% grade is between
-bottomValue = edges(index);
-% and
-higherValue = edges(index+1);
-
-% correction: le mode est de 4.25
+% grade is betw
