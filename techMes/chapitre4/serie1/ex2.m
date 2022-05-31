@@ -67,5 +67,4 @@ disp("Original average and std: " + round(average) + ", " + round(std));
 disp("Average and std for bin width 300: " + round(averages(1)) + ", " + round(stds(1)));
 disp("Average and std for bin width 1200: " + round(averages(2)) + ", " + round(stds(2)));
 disp("Average and std for bin width 3000: " + round(averages(3)) + ", " + round(stds(3)));
-% the fewer bins they are, the farther the computed stats from the original
-% ones
+% the fewer bins they are, the farther the computed stats from the original ones
