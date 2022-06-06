@@ -1,4 +1,4 @@
-function [average,std,median, cumulatedFrequencies] = histogramStats(histData, binsMiddle)
+function [average, std, median, cumulatedFrequencies] = histogramStats(histData, binsMiddle)
 % histogramStats: Find average and standard deviation of the data of a
 %                 histogram
 %   - histData: nb of occurences in each class
@@ -12,7 +12,8 @@ function [average,std,median, cumulatedFrequencies] = histogramStats(histData, b
 nbValues = sum(histData);
 nbClasses = length(histData);
 
-normalisedHistogram = histData/nbValues;
+nbValues
+normalisedHistogram = histData/nbValues; % probability for each value
 
 %% computing average
 average = sum(normalisedHistogram .* binsMiddle);
@@ -35,8 +36,8 @@ index = find(cumulatedFrequencies>=0.5, 1);
 
 ci = binsMiddle;
 fi = cumulatedFrequencies;
+
 % linear interpolation between the two values around a frequency of 50%
-ci(index-1)
 median = (ci(index-1)-ci(index))/(fi(index-1)-fi(index))*(0.5-fi(index-1)) + ci(index-1);
 end
 
