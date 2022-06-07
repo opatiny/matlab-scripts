@@ -23,13 +23,7 @@ eqm = sum(normalisedHistogram .* binsMiddle .^ 2) - average^2;
 std = sqrt(eqm);
 
 %% computing cumulative frequency histogram
-cumulatedFrequencies = zeros(1, nbClasses);
-previousValue = 0;
-for i=1:nbClasses
-    currentValue = previousValue + normalisedHistogram(i);
-    cumulatedFrequencies(i) = currentValue;
-    previousValue = currentValue;
-end
+cumulatedFrequencies = cumsum(normalisedHistogram);
 
 %% computing median
 index = find(cumulatedFrequencies>=0.5, 1);
