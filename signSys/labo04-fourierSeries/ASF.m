@@ -2,12 +2,12 @@ function [Xjk] = ASF (xT, tT, M)
 % AnalseSF 
 % Analyse de Fourier d'un signal discret périodique des M+1 coefficients
 % Input : 
-% xT : vecteur du signal d'une période numérique
-% tT : vecteur du temps
-% M : Nombre de coefficients fréquentiels à calculer (caution M<N)
+%   xT : vecteur du signal d'une période numérique
+%   tT : vecteur du temps
+%   M : Nombre de coefficients fréquentiels à calculer (caution M<N)
 % Output : 
-% Xjk : Vecteur comprenant les coefficients de la série de Fourier Xjk[1]
-% est la composante continue
+%   Xjk : Vecteur comprenant les coefficients de la série de Fourier Xjk[1]
+%        est la composante continue
 
 
 N = length(tT);

@@ -1,13 +1,12 @@
-function [xr] = SynthSF (Xjk, F0 , tt)
-% SynthSF 
-%   Reconstruction selon fourier
+function [xr] = synthesisFourierSeries(Xjk, F0 , tt)
+% synthesisFourierSeries 
+%   Reconstruct a signal using the Fourier coefficients Xjk.
 % inputs : 
-%   Xjk : vecteur contenant les  coeff de la serie de  Fourier  pour k = 0..M
-%   f0 : frequence fondamentale
-%   tt : vecteur du temps  sur  lequel  la  synthese de  doit  se faire
-
+%   Xjk : Vector with the Fourier coefficients k = 0..M
+%   f0 : Fundamental frequency
+%   tt : Time vector on which to base the synthesis
 % outputs : 
-%   xr : Signal reconstruit
+%   xr : Reconstructed signal
 
 xr=zeros(1, length(tt));
 

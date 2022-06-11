@@ -40,7 +40,7 @@ Ak(1) = abs(XjkUni(1));
 phik = angle(XjkUni);
 
 %% automatic peak detection
-threshold = max(Ak/2); % arbitrary value for the threshold
+threshold = max(Ak)/2; % arbitrary value for the threshold
 indexes = find(Ak>threshold);
 APeaks = Ak(indexes);
 phiPeaks = phik(indexes);

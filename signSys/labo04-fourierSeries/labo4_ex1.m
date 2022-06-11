@@ -24,7 +24,7 @@ clc; clear; close all;
  Xjk = ASF(xT,tT, M);
  
  % use parseval to compute power
- parsevalPower = sum(abs(Xjk).^2);
+ parsevalPower = sum(abs(Xjk).^2)
  
  %% reconstruct with M=10
  module = abs(Xjk);
@@ -32,7 +32,6 @@ clc; clear; close all;
  
  xr = SynthSF(Xjk, F0, tT);
 
- 
  %% plots
  M_vector = -M:M;
  
