@@ -1,13 +1,14 @@
 function [average, std, median, cumulatedFrequencies] = histogramStats(histData, binsMiddle)
-% histogramStats: Find average and standard deviation of the data of a
-%                 histogram
-%   - histData: nb of occurences in each class
-%   - binsMiddle: edges of the bins of the histogram
-% returns: 
-%   - average: average of the histogram data
-%   - std: standard deviation of the histogram
-%   - median: median of the data (linearily interpolated)
-%   - cumulatedFrequencies: the cumulated histogram of the frequencies
+% histogramStats
+%    Find average and standard deviation of the data of a histogram
+%  inputs:
+%   histData: nb of occurences in each class
+%   binsMiddle: edges of the bins of the histogram
+%  outputs: 
+%   average: average of the histogram data
+%   std: standard deviation of the histogram
+%   median: median of the data (linearily interpolated)
+%   cumulatedFrequencies: the cumulated histogram of the frequencies
 %                           (between 0 and 1)
 nbValues = sum(histData);
 nbClasses = length(histData);

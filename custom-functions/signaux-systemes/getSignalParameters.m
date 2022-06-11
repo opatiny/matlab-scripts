@@ -1,9 +1,9 @@
 function stats = getSignalParameters(xn)
 % getSignalParameters() 
 %     Computes energy, power and rms of the given discrete signal.
-%   input:
+%   inputs:
 %       xt : signal
-%   output:
+%   outputs:
 %       average : Valeur moyenne du signal
 %       energy: energy of the signal
 %       power : power of the signal
