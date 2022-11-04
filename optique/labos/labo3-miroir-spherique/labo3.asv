@@ -44,18 +44,15 @@ grid on;
 
 %% compute pi and po
 
-pi_inverse = 1./(xi + delta_i);
-po_inverse = 1./(xo + delta_o);
+pi_inverse = 1./(xi + delta_i)
+po_inverse = 1./(xo + delta_o)
 
-p = polyfit(po_inverse,pi_inverse, 1)
-linModel = polyval(p, po_inverse);
-
+p = polyfit(pi_inverse,po_in, 1)
+linModel = polyval(p, Gt_th);
 %% plot pi po
 figure();
 plot(po_inverse, pi_inverse, '.'); hold on;
-plot(po_inverse, linModel);
 hold off;
 xlabel('1/po [mm]');
 ylabel('1/pi [mm]');
-legend('Données', 'Régression linéaire: x = -1.0708y+0.0099')
 grid on;
