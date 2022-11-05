@@ -11,7 +11,6 @@ ho = 13; % [mm]
 %% Correct data
 Gt_mes = hi/ho;
 
-
 fun = @(deltas) rms(-(xi + deltas(1))./(xo + deltas(2)) - Gt_mes);
 % approximate systematic errors value
 approximateDeltas = [100, 90];
@@ -21,10 +20,10 @@ deltas = fminsearch(fun,approximateDeltas)
 delta_i = deltas(1);
 delta_o = deltas(2);
 
-
 Gt_th = - (xi + delta_i)./(xo + delta_o);
 
-error = fun(deltas)
+% rms for the best fit
+error = fun(deltas); % 0.0515
 
 % compute linear fit
 p = polyfit(Gt_th, Gt_mes, 1)
@@ -47,8 +46,13 @@ grid on;
 pi_inverse = 1./(xi + delta_i);
 po_inverse = 1./(xo + delta_o);
 
-p = polyfit(po_inverse,pi_inverse, 1)
+[p, S] = polyfit(po_inverse,pi_inverse, 1);
 linModel = polyval(p, po_inverse);
+
+% vergence of the mirror -> y intercept
+[vergence, sigma] = polyval(p, 0, S) % V = 0.00989, sigma = 8.16e-5
+focal = 1/vergence; % f = 101.1 mm
+deltaF = sigma/vergence*focal * 3 % 3 écarts-types
 
 %% plot pi po
 figure();
