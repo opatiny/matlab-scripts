@@ -46,10 +46,12 @@ plot([f_mes, f_mes], [-radius, radius], '--black'); % vertical line at mesured f
 
 for i = 1:N
     color = 'black';
-    if i == 13 || i == 14 || i == 27 || i == 28
+    if i == 13 || i == 14 || i == 28 || i == 29
         color = 'red';
     elseif i == 18 || i == 24
         color = 'blue';
+    elseif i == beamDiameter/2 + 1
+        color = 'green';
     end
     
     plot([-radius, startX(i)],[startY(i), startY(i)], 'Color', color);
@@ -62,4 +64,6 @@ plot(x, h2, 'b.', 'MarkerSize', 10);
 hold off;
 xlim([-radius,80]);
 ylim([-radius, radius]);
+xlabel('x [mm]');
+ylabel('h [mm]');
 grid on;
