@@ -1,4 +1,3 @@
-
 %% Verify output beam shape for a spherical dioptre
 clc; clear; close all;
 
