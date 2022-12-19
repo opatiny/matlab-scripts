@@ -2,7 +2,7 @@
 clc; clear; close all;
 
 %% load data
-data = readtable('data_exp1.csv'); % [mm]
+data = readtable('data_exp1.csv') % [mm]
 h = data.h; % [m]
 eclairement = data.epsilon; % [lux]
 

@@ -76,6 +76,8 @@ ylabel('\epsilon [lux]');
 legend({'Mesures', ['Modèle source ponctuelle:' newline 'I_0 = 24.1 cd']}, 'Location', 'northeast')
 grid on;
 
+nbDigits = 3;
+
 figure();
 plot(theta, eclairement, '.');hold on;
 plot(theta_th, eclairement_th_noOffset);
@@ -85,5 +87,10 @@ plot([-theta50, -theta50], [0,160], 'g');
 hold off;
 xlabel('angle [rad]');
 ylabel('\epsilon [lux]');
-legend({'Mesures', ['Modèle sans offset:' newline 'k = ' num2str(k_no, 2) ' rad^{-2}, I_0 =  ' num2str(I0_no, 2) ' cd'], ['Modèle avec offset:' newline 'k = ' num2str(k, 2) ' rad^{-2}' newline 'I_0 = ' num2str(I0, 2) ' cd' newline 'C = ' num2str(offset, 2) ' lux'], 'Angle auquel I = I_0/2'}, 'Location', 'northeast')
+legend({'Mesures', ['Modèle sans offset:' newline...
+    'k = ' num2str(k_no, nbDigits) ' rad^{-2}, I_0 =  ' num2str(I0_no, nbDigits)...
+    ' cd'], ['Modèle avec offset:' newline 'k = ' num2str(k, nbDigits)...
+    ' rad^{-2}' newline 'I_0 = ' num2str(I0, nbDigits) ' cd' newline...
+    'C = ' num2str(offset, nbDigits) ' lux'], 'Angle auquel I = I_0/2'},...
+    'Location', 'northeast')
 grid on;
