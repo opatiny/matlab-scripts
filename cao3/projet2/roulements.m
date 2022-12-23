@@ -1,19 +1,20 @@
 %% Dimensionnement roulements
 clc; clear; close all;
-% on aune chaine de 4 egrenages droits
+% on a une chaine de 4 engrenages droits
 
 %% Dimensions
 Mvis = 3.1; % Nm
 eta = 0.95;
 i = 1;
-d = 0.033; % mm
+d_pignon = 0.033; % mm
 alpha = 20; % °
 
-d = 0.01; % m
-L = 0.1; % m
-
 alpha = deg2rad(alpha);
-R = d/2;
+R = d_pignon/2;
+
+% dimensions de l'assemblage qui peuvent varier
+d = 0.01; % m -> doit etre le plus petit possible
+L = 0.15; % m -> doit etre le plus grand possible
 
 % calcul moments intermediaires
 M2 = Mvis/(eta*i)
