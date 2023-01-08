@@ -58,7 +58,7 @@ B3 = sqrt(B3y^2 + B3z^2)
 B4 = (L+d)/L*sqrt(Ft3^2 + Fr3^2)
 A4 = d/L*sqrt(Ft3^2 + Fr3^2)
 
-%% calcul C0
+%% dimensionnement statique
 % le roulement le plus chargé (B2) reprend environ 1500N radialement
 % on va prendre tous les roulements les mêmes
 forces = [B1, B2, B3, B4, A2, A4];
