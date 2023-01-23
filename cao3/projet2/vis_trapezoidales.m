@@ -22,7 +22,7 @@ nu = b/p-1;
 % pression acier sur bronze
 P_adm = 30; % MPa
 
-% limite elastique acier
+% limite elastique acier\item
 Rp02 = 1;
 
 % module cisaillement bronze
@@ -52,3 +52,6 @@ Rp02min = Fa/As % Pa
 h1c = 0.634*p;
 tau = Fa/(nu*pi*D1*h1c) % Pa
 % 8.7 MPa
+
+%% contrainte cisaillement bronze
+E = 
