@@ -13,8 +13,8 @@ alpha = deg2rad(alpha);
 R = d_pignon/2;
 
 % dimensions de l'assemblage qui peuvent varier
-d = 0.01; % m -> doit etre le plus petit possible
-L = 0.15; % m -> doit etre le plus grand possible
+d =(5+3+7.5)*0.001 % m -> doit etre le plus petit possible
+L = 0.148; % m -> doit etre le plus grand possible
 
 % calcul moments intermediaires
 M2 = Mvis/(eta*i)
@@ -27,7 +27,7 @@ Fr = @(Ft) Ft*tan(alpha);
 
 %% calcul forces engrenages
 % engrenage 1-2
-Ft1 = Ft(Mvis) % N
+Ft1 = Ft(Mred) % N -> nous avions utilise Mvis par erreur!!
 Fr1 = Fr(Ft1) % N
 
 % engrenage 2-3

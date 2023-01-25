@@ -23,7 +23,7 @@ omega = vlin/p % rpm
 %% Controle moteur choisi
 % specs moteur
 M_mot = 0.0294; % Nm
-omega_nom = 14300; % rpm
+omega_nom = 12200; % rpm
 i = 679; % [-] -> rapport transmission reducteur
 eta_red = 0.5; % [-] -> rendement reducteur max de 0.55
 
