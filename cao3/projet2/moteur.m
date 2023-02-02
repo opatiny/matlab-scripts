@@ -11,9 +11,9 @@ vlin = v0/2; % m/min -> vitesse de 1 ecrou
 p = 0.002; % m -> diam vis 10 mm
 
 %% Calcul moment motoreducteur
-Mred = Mvis/(eta*i)^3 * ((eta*i)^2 + 1) % Nm
+Mred = Mvis/(eta*i) * ((eta*i)^2 + 1) % Nm
 % avec mu = 0.1: 4.3 Nm
-% avec mu = 0.2: 6.9 Nm -> on prend cette valeur
+% avec mu = 0.2: 6.9 Nm XX 6.2 Nm-> on prend cette valeur
 % avec mu = 0.28: 8.9 Nm
 
 %% Vitesse rotation necessaire sortie reducteur
