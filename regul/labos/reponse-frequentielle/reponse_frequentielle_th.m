@@ -1,4 +1,4 @@
-%% Reponse frequentielle experimentale
+%% Reponse frequentielle theorique
 clear; clc; close all;
 init_path_MEE;
 
