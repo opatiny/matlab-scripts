@@ -1,5 +1,5 @@
 %% Systeme dynamique lineaire
-% Estimation fonction de transfert: systeme A
+% Estimation fonction de transfert: systeme D
 clear; clc; close all;
 init_path_MEE;
 
