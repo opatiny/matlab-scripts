@@ -1,4 +1,4 @@
-%%Test the tophat algorithm
+%% Test the tophat algorithm
 clear; clc; close all;
 
 %% Load image
@@ -10,7 +10,12 @@ figure();
 imshow(image);
 
 %% Process
-se = strel('disk',50);
+disk = strel('disk',50);
+
+rectangle = strel('rectangle', [101,101]);
+
+se = rectangle;
+
 tophatFiltered = imtophat(image,se);
 
 figure();
