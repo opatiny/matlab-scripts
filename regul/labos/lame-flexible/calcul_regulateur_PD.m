@@ -1,4 +1,4 @@
-%% Calcul fonction de transfer régulateur
+%% Calcul fonction de transfer régulateur (PD)
 clear; clc; close all;
 init_path_MEE;
 
