@@ -2,11 +2,14 @@
 clear; clc; close all;
 
 %% variables
-R1 = 10; % Ohm
-R2 = 20; % Ohm
+f0 = 10; % Hz
 C = 1e-6; % F
 
-R4 = R1*R2/(R1+R2) % Ohm
+R1 = 1/(2*pi*f0*C) % Ohm
+R2 = R1/10 % Ohm
+
+
+R4 = - R1*R2/(R1+R2) % Ohm
 
 s = tf('s');
 
