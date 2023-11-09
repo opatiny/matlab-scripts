@@ -69,12 +69,13 @@ f150Index = find(frequency == f150);
 f250 = 250e3; % Hz
 f250Index = find(frequency == f250);
 
-data_x = [R(f150Index,:); R(f250Index,:); L(f150Index,:); L(f250Index,:)];
+a = [x;x;x;x;real(Zb(f150Index,:)); real(Zb(f250Index,:))];
+b = [R(f150Index,:); R(f250Index,:); L(f150Index,:); L(f250Index,:); imag(Zb(f150Index,:)); imag(Zb(f250Index,:))];
 linModels = [];
 
-for i = 1:4
-    p = polyfit(x, data_x(i,:),1);
-    model = polyval(p,x);
+for i = 1:6
+    p = polyfit(a(i,:), b(i,:),1);
+    model = polyval(p,a(i,:));
     linModels = [linModels; model];
 end
 
@@ -104,9 +105,9 @@ end
 figure();
 plot(real(Zb(f150Index,:)), imag(Zb(f150Index,:)), 'ro'); hold on;
 plot(real(Zb(f250Index,:)), imag(Zb(f250Index,:)), 'bo');
-% plot(x, linModels(3,:), 'r-');
-% plot(x, linModels(4,:), 'b-');
-xlabel('Résistance [\Omega]');
-ylabel('Inductance [H]');
+plot(real(Zb(f150Index,:)), linModels(5,:), 'r-');
+plot(real(Zb(f250Index,:)), linModels(6,:), 'b-');
+xlabel('\Re(Z_b) [\Omega]');
+ylabel('\Im(Z_b) [\Omega]');
 legend('f = 150kHz', 'f = 250kHz','Location', 'southeast');
 grid on;
