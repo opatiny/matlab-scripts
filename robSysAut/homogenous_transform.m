@@ -1,8 +1,8 @@
 %% Homogenous transforms
 clear; clc; close all;
 
-XYZrotate = [0, 180, 90];
-XYZtransl = [1, 2, 3];
+XYZrotate = [90,180,0];
+XYZtransl = [1,0,0];
 
 % Compute homogeneous transform
 Rx = rotm2tform(rotx(XYZrotate(1)));
