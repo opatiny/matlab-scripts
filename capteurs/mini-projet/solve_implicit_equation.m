@@ -10,6 +10,7 @@ Rb = data.Rb;
 fres_exp = data.fres_exp;
 
 %% solve equation to find theoretical resonnance frequency
+% the capacity is given to us
 C = 39e-9; % F
 
 % we only solve for x = 0.7mm, which has index 5

@@ -42,13 +42,13 @@ f250Index = find(frequency == f250);
 index65 = find(fileNames == "65");
 index75 = find(fileNames == "75");
 
-vecteur_sensi= abs(Zb(:,index75)-Zb(:,index65))/(0.75-0.65);
+vecteur_sensi= abs(Zb(:,index75)-Zb(:,index65))/((0.75-0.65)*1e-3);
 sensi_max = max(vecteur_sensi);
 freqIndex = find(vecteur_sensi==sensi_max);
 freq_res = frequency(freqIndex) % freq de resonnance en x = 0.7 mm
 
 S150 = vecteur_sensi(f150Index); % 4.84 Ohm/m
-S250 = vecteur_sensi(f250Index); % 8.30 Ohm/m
+S250 = vecteur_sensi(f250Index); % 8.20 Ohm/m
 
 %% plot sensibilite pour toutes les freqs autour de x = 0.7mm
 figure();
@@ -93,10 +93,10 @@ for i = 1:8
     linModels = [linModels; model];
 end
 
-%% calcul sensibilite aprroximatives pour les deux freq en Ohm/m
+%% calcul sensibilite approximatives pour les deux freq en Ohm/m
 % en utilisant regression sur tous les x
-S150 = polynoms(7,1); % 4.76 Ohm/m
-S250 = polynoms(8,1); % 8.18 Ohm/m
+S150 = polynoms(7,1) % 4.76 Ohm/m
+S250 = polynoms(8,1) % 8.18 Ohm/m
 
 %% plot R and L depending on x for 150kHz and 250kHz
 % figure();
@@ -123,26 +123,26 @@ S250 = polynoms(8,1); % 8.18 Ohm/m
 % grid on;
 
 %% plot Zb on complex plane
-% figure();
-% plot(real(Zb(f150Index,:)), imag(Zb(f150Index,:)), 'ro'); hold on;
-% plot(real(Zb(f250Index,:)), imag(Zb(f250Index,:)), 'bo');
-% plot(real(Zb(f150Index,:)), linModels(5,:), 'r-');
-% plot(real(Zb(f250Index,:)), linModels(6,:), 'b-');
-% hold off;
-% xlabel('Re(Z_b) [\Omega]');
-% ylabel('Im(Z_b) [\Omega]');
-% legend('f = 150kHz', 'f = 250kHz','Location', 'southeast');
-% grid on;
+figure();
+plot(real(Zb(f150Index,:)), imag(Zb(f150Index,:)), 'ro'); hold on;
+%plot(real(Zb(f250Index,:)), imag(Zb(f250Index,:)), 'bo');
+plot(real(Zb(f150Index,:)), linModels(5,:), 'r-');
+%plot(real(Zb(f250Index,:)), linModels(6,:), 'b-');
+hold off;
+xlabel('Re(Z_b) [\Omega]');
+ylabel('Im(Z_b) [\Omega]');
+legend('f = 150kHz', 'f = 250kHz','Location', 'southeast');
+grid on;
 
 %% plot module de l'impedance en fonction de x
-% figure();
-% plot(x, abs(Zb(f150Index, :)), 'ro'); hold on
-% plot(x, abs(Zb(f250Index, :)), 'bo');
-% plot(x, linModels(7,:), 'r-');
-% plot(x, linModels(8,:), 'b-');
-% hold off;
-% xlabel('x [m]');
-% ylabel('Z_b [\Omega]');
-% legend('f = 150kHz', 'f = 250kHz','Location', 'southeast');
-% grid on;
+figure();
+plot(x, abs(Zb(f150Index, :)), 'ro'); hold on
+plot(x, abs(Zb(f250Index, :)), 'bo');
+plot(x, linModels(7,:), 'r-');
+plot(x, linModels(8,:), 'b-');
+hold off;
+xlabel('x [m]');
+ylabel('Z_b [\Omega]');
+legend('f = 150kHz', 'f = 250kHz','Location', 'southeast');
+grid on;
 
