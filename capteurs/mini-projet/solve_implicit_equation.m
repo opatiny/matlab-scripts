@@ -21,4 +21,4 @@ F = @(f) f - 1/(2*pi) * sqrt(1./(L_f(f)*C) - R_f(f).^2/L_f(f).^2);
 fres_th = fzero(F, fres_exp);
 
 fres_exp % 192 kHz
-fres_th % 169 kHz
+fres_th % 169 kHz 

@@ -28,21 +28,37 @@ for i = 1:length(fileNames)
 end
 
 %% experimental resonnance frequency
-f_res_exp = 192e3; % Hz
+fres_exp = 192e3; % Hz
+fres_th = 169e3; % Hz
 
 %% interpolation of Lb and Rb for all x at f_res_exp
 % linear interpolation at experimental resonnance freq
-fres_exp = 192e3; % Hz
-% inductance et resistance bobine -> prob not really useful but oh well
-Lb_res = interp1(frequency, Lb, fres_exp)
-Rb_res = interp1(frequency, Rb, fres_exp)
+fres = fres_th;
+% inductance et resistance bobine a la freq de resonnance experimentale
+Lb_res = interp1(frequency, Lb, fres);
+Rb_res = interp1(frequency, Rb, fres);
 
 save('data_res.mat', 'frequency', 'Rb', 'Lb', 'fres_exp', 'Rb_res', 'Lb_res', 'x');
 
-%% calcul Ro_opt a la frequence de resonnance
+%% calcul Ro_opt a la frequence de resonance
 C = 39e-9; % F
 
-Ro_opt = Lb_res./(Rb_res*C)
+Ro_opt = Lb_res./(Rb_res*C);
+
+%% fonction de Moebius
+w = 2*pi*fres;
+Zb_res = Rb_res + 1i*w.*Lb_res;
+
+% linear fit Zb
+
+p = polyfit(real(Zb_res), imag(Zb_res),1);
+linModel = polyval(p,real(Zb_res));
+
+% compute moebius transform
+H = Zb_res./((1 + 1i*w*C*Ro_opt).*Zb_res + Ro_opt);
+
+% circular fit
+[R, xc, yc] = circfit(real(H), imag(H))
 
 %% plot R and L depending on x for f_res_exp
 % figure();
@@ -66,3 +82,26 @@ Ro_opt = Lb_res./(Rb_res*C)
 % xlabel('x [m]');
 % ylabel('R_{o,opt} [\Omega]');
 % grid on;
+
+%% plot Zb on complex plane
+figure();
+plot(real(Zb_res), imag(Zb_res), 'ro'); hold on;
+plot(real(Zb_res), linModel, 'b-');
+hold off;
+xlabel('Re(Z_b) [\Omega]');
+ylabel('Im(Z_b) [\Omega]');
+legend('Impédance', 'Régression linéaire', 'Location', 'southwest');
+grid on;
+
+%% plot Moebius
+figure();
+plot(real(H), imag(H), 'ro'); hold on;
+circle(xc,yc,R,'b-');
+plot([-0.05, 0.55], [0,0], 'g-');
+hold off;
+xlabel('Re(H) [\Omega]');
+ylabel('Im(H) [\Omega]');
+legend('H(Z_b)', 'Régression circulaire', 'y = 0', 'Location', 'southwest');
+xlim([-0.05, 0.55]);
+grid on;
+axis equal;
