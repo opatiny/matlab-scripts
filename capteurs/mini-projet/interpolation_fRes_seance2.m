@@ -46,19 +46,20 @@ C = 39e-9; % F
 Ro_opt = Lb_res./(Rb_res*C);
 
 %% fonction de Moebius
+% Ro_opt = 320; % ohm
 w = 2*pi*fres;
 Zb_res = Rb_res + 1i*w.*Lb_res;
 
 % linear fit Zb
-
 p = polyfit(real(Zb_res), imag(Zb_res),1);
 linModel = polyval(p,real(Zb_res));
 
 % compute moebius transform
-H = Zb_res./((1 + 1i*w*C*Ro_opt).*Zb_res + Ro_opt);
+H = Zb_res./((1 + 1i*w*C*Ro_opt).*Zb_res + Ro_opt)
 
 % circular fit
 [R, xc, yc] = circfit(real(H), imag(H))
+% rayon environ 0.25 ohm
 
 %% plot R and L depending on x for f_res_exp
 % figure();
