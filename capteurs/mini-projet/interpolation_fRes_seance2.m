@@ -33,7 +33,7 @@ fres_th = 169e3; % Hz
 
 %% interpolation of Lb and Rb for all x at f_res_exp
 % linear interpolation at experimental resonnance freq
-fres = fres_th;
+fres = fres_th * 1.005;
 % inductance et resistance bobine a la freq de resonnance experimentale
 Lb_res = interp1(frequency, Lb, fres);
 Rb_res = interp1(frequency, Rb, fres);
