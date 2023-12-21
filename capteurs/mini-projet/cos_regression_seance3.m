@@ -27,4 +27,4 @@ hold off;
 grid on;
 xlabel('\phi [°]');
 ylabel('U_{out} [V]');
-legend('Mesures', 'Modèle théorique','Interpreter','latex');
+legend('Mesures', 'Modèle théorique');
