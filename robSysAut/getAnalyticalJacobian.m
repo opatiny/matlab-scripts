@@ -1,8 +1,9 @@
-% compute geometric Jacobian matrix for a given system with n joints
+% compute analytical Jacobian matrix for a given system with n joints
 % points: n+1 [x;y;z] points
 % zAxes: the z axes of the joints
 % jointTypes: joints can be 'R' or 'P'
-function J = getGeometricJacobian(points, zAxes, jointTypes)
+% returns: 6 x n matrix
+function J = getAnalyticalJacobian(points, zAxes, jointTypes)
     nbJoints = length(zAxes(1,:));
     J = zeros(6, nbJoints);
 

@@ -1,12 +1,13 @@
 %% Get direct geometric model from Denavit-Hartenberg table
 clear; clc; close all;
 
-
 %% data
 % DH: for each joint a_i, alpha_i, d_i, theta_i -> N*4
-dhTable = [0 0 3 0
+testDhTable = [0 0 3 0
            1 0 0 1
            1 0 0 1];
+       
+dhTable = 
 % vectors corresponding to z axis of each joint
 zAxes = [0 0 0 
         0 0 0 
@@ -24,13 +25,14 @@ end
 %% MGD: modele geometrique direct
 [dgm, transforms] = getDgmFromDh(dhTable);
 
+dgm
+
 disp(transforms)
 [x,y,z] = get3Dpoints(transforms);
 
 points = [x;y;z]
 
 %% Jacobien geometrique
-
 J = getGeometricJacobian(points, zAxes, jointTypes)
 
 %% plot results
