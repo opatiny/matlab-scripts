@@ -1,13 +1,13 @@
 %% Homogenous transforms
 clear; clc; close all;
 
-XYZrotate = [90,180,0];
-XYZtransl = [1,0,0];
+XYZrotate = [-90,0,180];
+XYZtransl = [0,1,0];
 
 % Compute homogeneous transform
 Rx = rotm2tform(rotx(XYZrotate(1)));
-Ry = rotm2tform(roty(XYZrotate(2)))
-Rz = rotm2tform(rotz(XYZrotate(3)))
+Ry = rotm2tform(roty(XYZrotate(2)));
+Rz = rotm2tform(rotz(XYZrotate(3)));
 K = trvec2tform([XYZtransl(1),XYZtransl(2),XYZtransl(3)]);
 
 % Transformation in current frame/ mobile frame
