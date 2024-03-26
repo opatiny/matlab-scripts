@@ -1,0 +1,13 @@
+Temperaturmessung
+
+Zeit    Temperatur
+ 8 Uhr	 5°C
+ 9 Uhr	 7°C
+10 Uhr	10°C
+11 Uhr	12°C
+12 Uhr	14°C
+13 Uhr	15°C
+14 Uhr	16°C
+15 Uhr	14°C
+16 Uhr	13°C
+17 Uhr	11°C
