@@ -36,16 +36,25 @@ A =[ 4     8     4     7     4     8     8     3     4     1     1
 
 %% Losungen
 % a)
-A = unique(A, 'rows') % sorts the rows, which I don't want
+a = unique(A, 'rows'); % sorts the rows, which I don't want
 
 % b)
 A(find(A<0)) = 0
 
 % c)
-find(sum(A)==123)
+c = find(sum(A)==123)
 
 % d)
+d = sum(A(10, :))
 
+% e)
+e = find(min(A) > 0)
+
+% f)
+
+% more than 4 players more than 7 goals
+
+f = find(sum(A' > 7) > 4)
 
 
 
