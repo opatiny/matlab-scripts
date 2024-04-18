@@ -115,7 +115,6 @@ plot(solution, f1(solution), 'g.', 'MarkerSize', 10);
 hold off;
 grid on;
 
-
 %% -------------------------------------------------------------------------
 %% II systems of equations
 %% -------------------------------------------------------------------------
@@ -237,6 +236,22 @@ plot(lsg,F(lsg),'o')
 % x1^2 - x2 + 1=0
 % x1 - cos(pi/2*x2) = 0
 clear, clc, clf
+
+syms x1 x2
+eq1 = x1^2 - x2 + 1 == 0;
+eq2 = x1 - cos(pi/2*x2) == 0;
+
+[sol11, sol12] = vpasolve(eq1, eq2, x1, x2, [0 0])
+[sol21, sol22] = vpasolve(eq1, eq2, x1, x2, [-1 1.5])
+[sol31, sol32] = vpasolve(eq1, eq2, x1, x2, [-1 2])
+
+% graph
+% fimplicit only works with 2d, fimplicit3 also exists for 3D
+fimplicit(eq1); hold on;
+fimplicit(eq2);
+hold off;
+grid on;
+axis([-2 2 0.5 2.5]);
 
 %% -------------------------------------------------------------------
 %% local function for fsolve
