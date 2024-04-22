@@ -1,5 +1,8 @@
-%% Assignment 5 - Exercise 1
+%% Assignment 5 - Exercise 2
 clear; clc; close all;
+
+% not finished
+% I don't understand why it doesn't work
 
 %% Variables
 C = 10e-6; % C
@@ -10,8 +13,9 @@ f=logspace(0,9,1000);  % log spaced frequencies
 w = 2*pi*f;
 
 %% Define transfer function
+s = 1j*w;
 
-Z_C = 1./(1j*w*C);
+Z_C = 1./(s*C);
 
 Z_eq = R + par(Z_C, R + Z_C);
 
@@ -21,6 +25,9 @@ Z_eq = R + par(Z_C, R + Z_C);
 
 
 %% plot
+figure();
+plot(Z_eq)
+
 figure();
 subplot(1,2,1);
 plot(Z_eq);
