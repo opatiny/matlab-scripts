@@ -29,7 +29,8 @@ P = real(S);
 [maxPower,index] = max(P, [], 'all','linear');
 [yMax, xMax] = ind2sub(size(P),index);
 
-Zvmax = R(xMax)+ 1i* X(yMax)
+Zvmax = R(xMax)+ 1i* X(yMax);
+
 %% plot
 figure();
 contour(x,y,P, 100, '.-'); hold on;
