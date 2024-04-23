@@ -19,7 +19,7 @@ Ztot = Zi + Zv;
 I = Uq./Ztot;
 
 % dissipated power
-S = 1/2*Zv .* abs(I).^2;
+S = Zv .* abs(I).^2;
 
 P = real(S);
 

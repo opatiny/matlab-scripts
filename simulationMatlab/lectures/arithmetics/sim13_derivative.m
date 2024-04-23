@@ -78,24 +78,26 @@ fplot(diff(sym(f)),[-pi,pi])
 clear,clc,clf
 
 % a1) symbolic 
-
-% dfdx_sym=
-
-
+syms x;
+f(x) = x*sin(1/x);
+dfdx_sym = diff(f,x);
 
 % a2) continous: x,f() is given
+df=@(f,x,dx) (f(x+dx)-f(x-dx))/2/dx;
+
 x=linspace(.01,.03);
-% f=@(x) 
+f = @(x) x.*sin(1./x);
+% caution: the if the dx is too big we'll have bad results where the
+% function is steep!!
+dx=1e-6;          % distance of grid points
 
-% dfdx_con=
-
-
+dfdx_con = df(f,x,dx);% numeric differentiation
 
 % a3) discrete: x,y is given (e.g. from experiment)
 x=linspace(.01,.03);
 y=f(x); clear f
 
-% dfdx_dis=
+dfdx_dis = gradient(y, x)
 
 % compare graphically
 fplot(dfdx_sym,[min(x),max(x)]),hold on
@@ -122,5 +124,16 @@ f1=@(x) cos(x);
 x0=0.5;
 % difference quotient
 df=@(f,x,dx) (f(x+dx)-f(x-dx))/2./dx;
+
+dx = logspace(-1,-11);
+
+error1 = abs(df(f0,x0,dx) - f1(x0));
+x0 = single(0.5); % single precision number
+error2 = abs(df(f0,x0,dx) - f1(x0));
+
+loglog(dx, error1, 'o-');hold on;
+loglog(dx, error2, 'o-');
+hold off;
+grid on;
 
 
