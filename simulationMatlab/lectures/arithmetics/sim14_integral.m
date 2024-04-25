@@ -217,6 +217,7 @@ ymx=@(x) b*sqrt(1-x.^2/a^2);    % integration limit y depends on x
 4*integral2(f1,0,a,0,ymx)       % integration limits x[0,a] and y[0,ymax]
 
 % option 2) limit function f1 with logical operators
+% modify original function to define bounds
 f2=@(x,y) f1(x,y).*((x.^2/a^2+y.^2/b^2)<=1);
 integral2(f2,-a,a,-b,b)        % integration limits x[0,R] and y[0,R]
 
