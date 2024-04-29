@@ -33,9 +33,13 @@ syms d;
 Hz = @(z, I) I.*R.^2./(2.*(R.^2 + z.^2).^(2/3));
 
 H_helm = @(z,d) Hz(z-d/2, I) + Hz(z+d/2, I);
-H2p = diff(H_helm,z,2)
+H2p = diff(H_helm,z,2);
 
 z = 0; % m
-eq = subs(H2p) == 0
-helmotzDistance = vpasolve(eq,d, 0)
+eqH = subs(H2p) == 0;
+helmotzDistance = vpasolve(eqH, d, 0)
+
+H3p = diff(H2p,z);
+eqM = subs(H3p) == 0;
+maxwellDistance = vpasolve(eqM, d, 0)
 
