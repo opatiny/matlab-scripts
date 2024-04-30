@@ -15,4 +15,4 @@ dBz_dr = mu0*I*R^2*N/(2*r^3*L);
 
 Bz = int(dBz_dr, r)
 
-% z-L/2, z+L/2
+% integral limits: z-L/2, z+L/2

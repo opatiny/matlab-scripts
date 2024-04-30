@@ -29,17 +29,32 @@ xlabel('z [m]');
 ylabel('H(z) [T]');
 
 %% b) Helmotz and Maxwell arrangements
-syms d;
-Hz = @(z, I) I.*R.^2./(2.*(R.^2 + z.^2).^(2/3));
+syms d I R z;
+% this is how you define a symbolic function
+Hz = I*R^2/(2*(R^2 + z^2)^(2/3));
+H1 = subs(Hz, z, z-d/2);
+H2 = subs(Hz, z, z+d/2);
 
-H_helm = @(z,d) Hz(z-d/2, I) + Hz(z+d/2, I);
+H_helm = H1 + H2;
 H2p = diff(H_helm,z,2);
 
-z = 0; % m
-eqH = subs(H2p) == 0;
+eqH = subs(H2p,z,0) == 0;
 helmotzDistance = vpasolve(eqH, d, 0)
 
-H3p = diff(H2p,z);
-eqM = subs(H3p) == 0;
-maxwellDistance = vpasolve(eqM, d, 0)
+H_maxw = @(z,d) Hz(z-d/2, I) + Hz(z+d/2, -I);
+H3p = diff(H_maxw,z,3);
 
+z = 0; % m
+eqM = subs(H2p) == 0;
+maxwellDistance = solve(eqM, d)
+
+%%
+syms x y
+z=x+y
+subs(z,x,x+1)
+z
+
+
+syms z(x)
+z=x+y;
+z(3)
