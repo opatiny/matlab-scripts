@@ -217,8 +217,7 @@ T('9:00',{'current', 'power'})
 
 %% exercise 16.2 
 % Swap voltage and current in the table
-
-
+T(:,[2,1,3:end])
 
 %% read table
 T = readtable('sim16_data.csv','ReadRowNames',true)
@@ -226,6 +225,12 @@ T = readtable('sim16_data.csv','ReadRowNames',true)
 %% exercise 16.3
 % add a column 'TestAvg' to T, which contains the mean value of the three
 % test results
+
+% caution with brackets!!!
+round = T(:,[2:end])
+curly = T{:,[2:end]}
+
+T.TestAvg = mean(T{:,[2:end]},2)
 
 
 %% Grouping variables

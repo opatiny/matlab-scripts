@@ -4,15 +4,22 @@ clear; clc; clf;
 
 %% Variables
 % mu0 = 4e-7*pi; % vacuum permeability [H/m]
-syms mu0 N L R I r z;
+syms mu0 N L R I z x;
+% restrict variables! otherwise won't be able to solve
+syms mu0 N L R I positive;
+syms z x real;
 % N: nb windings
 % L: coil length
 % R: coil radius
 % I: current
 
 %% integrate over coil
-dBz_dr = mu0*I*R^2*N/(2*r^3*L);
 
-Bz = int(dBz_dr, r)
+r = sqrt(R^2 + (z-x)^2);
+dBz_dx = mu0*I*R^2*N/(2*r^3*L);
 
-% integral limits: z-L/2, z+L/2
+xmin = -L/2;
+xmax = L/2;
+
+Bz = int(dBz_dx, x, xmin, xmax)
+% output of this line is just Bz = int((I*N*R^2*mu0)/(2*L*((x - z)^2 + R^2)^(3/2)), x, -L/2, L/2)
