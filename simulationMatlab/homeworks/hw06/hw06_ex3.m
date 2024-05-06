@@ -1,4 +1,4 @@
-%% Assignment 6 - Magnetic fields - Problem 1
+%% Assignment 6 - Exercise 2
 clear; clc; close all;
 
 %% Variables

@@ -1,4 +1,4 @@
-%% Assignment 5 - Exercise 2
+%% Assignment 6 - Exercise 2
 clear; clc; close all;
 
 %% Variables
