@@ -11,6 +11,6 @@ t = linspace(0,T,N);
 y = a0;
 for i=1:length(an)
     wn = 2*pi*fn(i);
-    y = y + an(i) * cos(i*wn*t) + bn(i) * sin(i*wn*t);
+    y = y + an(i) * cos(wn*t) + bn(i) * sin(wn*t);
 end
 end

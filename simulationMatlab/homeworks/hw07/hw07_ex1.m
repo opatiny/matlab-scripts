@@ -21,13 +21,13 @@ Ueff_half = computeRms(halfWave);
 Ueff_full = computeRms(fullWave);
 
 %% b) Fourier coefficients
-m = 1;
+m = 5;
 
-[a0, fn, an, bn] = fanalysis(t,halfWave,m)
+[a0, fn, an, bn] = fanalysis(t,halfWave,m);
 [tf1, yf1] = fsynthesis(a0,fn,an,bn,N);
 size(tf1)
 
-[a0, fn, an, bn] = fanalysis(t,fullWave,m)
+[a0, fn, an, bn] = fanalysis(t,fullWave,m);
 [tf2, yf2] = fsynthesis(a0,fn,an,bn,N);
 
 
