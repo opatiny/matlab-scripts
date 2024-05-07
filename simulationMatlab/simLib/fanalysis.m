@@ -19,8 +19,9 @@ bn = zeros(1,m);
 for i=1:m
     fi = i*f0;
     fn(i) = fi;
-    an(i) = 2/T*trapz(y.*cos(2*pi*fi*t));
-    bn(i) = 2/T*trapz(y.*sin(2*pi*fi*t));
+
+    an(i) = 2/T*trapz(t, y.*cos(2*pi*fi*t));
+    bn(i) = 2/T*trapz(t, y.*sin(2*pi*fi*t));
 end
 end
 

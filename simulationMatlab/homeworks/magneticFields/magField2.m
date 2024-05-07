@@ -3,8 +3,6 @@ clear; clc; clf;
 % Helmotz coil
 
 %% Variables
-% mu0 = 4e-7*pi; % vacuum permeability [H/m]
-syms mu0 N L R I z x;
 % restrict variables! otherwise won't be able to solve
 syms mu0 N L R I positive;
 syms z x real;
