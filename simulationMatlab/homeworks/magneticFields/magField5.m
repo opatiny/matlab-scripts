@@ -1,7 +1,8 @@
 %% Assignment 7 - Magnetic fields - Problem 5
 clear; clc; clf;
 
-%% Check Hloop function
+%% Test Hloop function
+% should give → Hz = 0.0768 (A/m), Hr = 0.091 (A/m)
 [Hz,Hr] = Hloop(1,1,1)
 
 %% Plot magnetic field
@@ -38,6 +39,7 @@ function [Hz, Hr] = Hloop(R,r,z)
 %   z: z of P in polar coordinate 
 % returns:
 %   Hz: z component of mag field [A/m]
+%   Hr: radial component of the mag field [A/m]
 
 I = 1; % A
 mu0 = 4*pi*1e-7; % N/A^2
@@ -49,9 +51,13 @@ k2 = 4*R*r./Rpp;
 
 [K, E] = ellipke(k2);
 
-a = I*mu0/(2*pi)./sqrt(Rpp);
+a = I*mu0./(2*pi)./sqrt(Rpp);
 
-Hr = a.*z./r.*((R.^2 + r.^2 + z.^2)./Rmp.*E - K);
+Br = a.*z./r.*((R.^2 + r.^2 + z.^2)./Rmp.*E - K);
 
-Hz = a.*((R.^2 - r.^2 - z.^2)./Rmp.*E + K);
+Bz = a.*((R.^2 - r.^2 - z.^2)./Rmp.*E + K);
+
+% B = mu * H
+Hr = Br/mu0;
+Hz = Bz/mu0;
 end
