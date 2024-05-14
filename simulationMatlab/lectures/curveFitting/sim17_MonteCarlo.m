@@ -271,12 +271,30 @@ nAss=4; % number of aces (ace if x = 1-4)
 % at least two aces
 aa=sum(x(1:gk,:)<=nAss);        % number of aces drawn
 n2=sum(aa>=2);                  % at least two aces?
-p=n2/n                          % probability p: good games/all games
+pa=n2/n                          % probability p: good games/all games
 
 % Does p change if I admit to have
 % b) at least one ace
-% c) at least ace of hearts
+filt = aa(find(aa>0));
 
+n2=sum(filt>=2);                  % at least two aces?
+pb=n2/length(filt)                          % probability p: good games/all games
+
+% c) at least ace of hearts
+% intuition: should be the same
+
+% we take one card out of the game
+n=1e5;  % number of games
+ak=51;  % number of cards
+gk=12;  % drawn cards
+nAss=3; % number of aces
+
+% shuffel n games
+[~,x] = sort(rand(ak,n));   
+% at least two aces
+aa=sum(x(1:gk,:)<=nAss);        % number of aces drawn
+n2=sum(aa>=1);                  % at least two aces?
+pc=n2/n                         % probability p: good games/all games
 
 
 %% Denkfalle bedingte Wahrscheinlichkeit

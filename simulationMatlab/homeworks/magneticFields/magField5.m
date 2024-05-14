@@ -40,6 +40,7 @@ subplot(1,3,1:2);
 imagesc(r,z,H);
 colormap(jet);
 colorbar;
+caxis([0 40]); % clamp to a max value of 40
 hold on;
 p = streamslice(R,Z,Hr,Hz);
 set(p,'LineWidth', 1)
