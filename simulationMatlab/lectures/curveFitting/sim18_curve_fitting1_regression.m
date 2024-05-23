@@ -293,7 +293,7 @@ hold off;
 
 % 3)
 fun =@(p,x) p(1).*(x-p(2)).^p(3)
-p0 = [5 1 2];
+p0 = [0 1790 1];
 optParams = lsqcurvefit(fun, p0, x, y);
 
 hold on;
@@ -317,4 +317,4 @@ plot(x,y,'o')
 cftool
 % without GUI: fit() function
 fit(x',y', 'K*( 1 - (1+x/T)*exp(-x/T) )','Startpoint',[0 1]) 
-
+% -> this is faaaaancy
