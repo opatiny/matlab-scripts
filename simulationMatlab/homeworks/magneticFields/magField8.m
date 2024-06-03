@@ -11,26 +11,44 @@ L = 0.015; % m
 I = 1; % A
 R = 0.0075; % m
 z = 0.015; % m
-
-%% force between two current loops
 mu0 = 4*pi*1e-7; % N/A^2
 
-% todo: what should r be?
-[Hz1, Hr1] = Hloop(R,R,z);
-
-H = getNorm(Hz1, Hr1);
-B = H*mu0
-
-Fz = I*2*pi*R*B % false, approx 2x too big
-
-%% force between current loop and coil
 % what is the number of loops to get Br = 1.3 T?
 % NI/L = Br/mu0
-N = round(Br/mu0*L/I);
+N = round(Br/mu0*L/I)
 
-[Hz1, Hr1] = Hcoil(N,R,L,R,z);
+getB = @(H) H*mu0;
+getFz = @(B) I*2*pi*R*B;
 
-H = getNorm(Hz1, Hr1);
-B = H*mu0
+%% a) force between two current loops
+% todo: what should r be?
+[~, Hr1] = Hloop(R,R,z);
 
-Fz = I*2*pi*R*B % false, approx 2x too big
+H = Hr1;
+B = getB(H);
+
+Fz = getFz(B)
+
+%% b) force between current loop and coil
+[~, Hr1] = Hcoil(N,R,L,R,z);
+
+H = Hr1;
+B = H*mu0;
+
+Fz = I*2*pi*R*B
+
+%% c) force between two touching coils (permanent magnets)
+dz = L/(N-1);
+
+% compute center of the coils
+half = (N-1)/2;
+zs = (0:N)*dz;
+
+Hz = 0;
+Hr = 0;
+
+for i=1:N
+   i % for debug
+   [~, Hri] = Hcoil(N,R,L,R,zs(i));
+   Hr = Hr + Hri;
+end
