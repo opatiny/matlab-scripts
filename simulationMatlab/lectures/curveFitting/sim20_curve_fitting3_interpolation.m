@@ -248,6 +248,8 @@ mesh(XI,YI,ZI)
 
 
 %% exercise 20.4 
+%todo: lookup solution of this problem
+
 % find the 10 missing table entries 
 % in sim20_Table2D.xls by interpolation
 % the coordinates are in the first row or column.
@@ -261,12 +263,24 @@ mesh(XI,YI,ZI)
 clear,clc,clf
 
 data = xlsread('data/sim20_Table2D.xls');
+x = data(1,2:end);
+y = data(2:end,1);
+
 % a)
+subplot(131)
 surf(data);
 
 % b)
+[X,Y] = meshgrid(x,y)
 indices = find(isnan(data));
-data(indices) = 0
-surf(data)
+data(indices) = [];
+X(indices) = [];
+Y(indices) = [];
+
+filled = fillmissing(data,'linear');
+
+% c)
+subplot(133)
+surf(x,y,filled)
 
 
