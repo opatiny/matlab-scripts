@@ -1,4 +1,4 @@
-%% Assignment 9 - Magnetic fields - Problem 8
+%% Magnetic fields - Problem 8
 clear; clc; clf;
 
 % attraction force between 2 permanent magnets

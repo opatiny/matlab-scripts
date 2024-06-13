@@ -248,7 +248,7 @@ mesh(XI,YI,ZI)
 
 
 %% exercise 20.4 
-%todo: lookup solution of this problem
+%todo: find solution of this problem
 
 % find the 10 missing table entries 
 % in sim20_Table2D.xls by interpolation
