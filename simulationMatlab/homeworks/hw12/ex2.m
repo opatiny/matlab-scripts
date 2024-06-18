@@ -72,6 +72,7 @@ xlabel('Time [s]');
 ylabel('Amplitude');
 
 subplot(212);
+title('Average of the abs value of signal');
 plot(t,smooth,'-');
 hold on;
 yline(threshold, 'r');
