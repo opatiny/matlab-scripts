@@ -15,9 +15,10 @@ t = 0:ts:(length(y)-1)*ts;
 % sound(y,fs);
 
 %% find when keys are pressed
-threshold = 0.5;
+threshold = 0.2;
 
-smooth = movmean(y,100)
+
+smooth = movmean(abs(y),100);
 
 
 
@@ -29,5 +30,8 @@ ylabel('Amplitude');
 
 subplot(312);
 plot(t,smooth,'-');
+hold on;
+yline(threshold);
+hold off;
 xlabel('Time [s]');
 ylabel('Amplitude');
