@@ -64,6 +64,10 @@ end
 
 fprintf('The sequences of keys is: %s\n', text);
 
+% the result we get is not perfect, probably because the max identification
+% sometimes doesn't work -> instead check the amplitude and the desired
+% frequencies (interpolation necessary) and fin the maximum
+
 %% plot
 figure(2)
 subplot(211);
