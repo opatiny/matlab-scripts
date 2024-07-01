@@ -152,7 +152,7 @@ clear,clc
 % p(2) = y
 ode=@(t,p) [ -4*p(1)-2*p(2)+2; 
               2*p(1)+  p(2)-1];
-[t,p] = ode45(ode,[0 2],[-1,0]);
+[t,p] = ode45(ode,[0 2],[-1,0]); % second param: simulation time, third param: initial conditions
 plot(t,p)
 legend('x(t)','y(t)')
 
