@@ -71,12 +71,14 @@ eq1 = y1 == a * cosh((x1 - x0)/a) + y0;
 eq2 = y2 == a * cosh((x2 - x0)/a) + y0;
 eq3 = l == 2*a*sinh((x2-x1)/(2*a));
 
-p0 = [0 0.3 -1.2]; % initial parameters guess
+p0 = [1 0 0]; % initial parameters guess
 
-[A, X0, Y0] = vpasolve(eq1,eq2,eq3, a, x0, y0, p0) 
+[A, X0, Y0] = vpasolve([eq1,eq2,eq3], [a, x0, y0], p0) 
 
 f = @(x) A * cosh((x - X0)/A) + Y0
 fplot(f,[-1,2]); 
+
+% 0.8, 0.3, -2.2
 
 
 %% Problem 5 -> ok
@@ -92,13 +94,16 @@ streamslice(x,y,Hx,Hy)
 axis equal, axis tight
 
 %% Problem 6 -> ??
-syms i U L1 L2 M;
+syms di1dt di2dt U L1 L2 M Le;
 
-i = i1 + i2;
-U = L1*di1dt + M*di2dt
-U = L2*di2dt + M*di1dt
+% i == i1 + i2;
+eq1 = U == L1*di1dt + M*di2dt;
+eq2 = U == L2*di2dt + M*di1dt;
+eq3 = U == Le*(di1dt + di2dt);
 
-U = Le*didt
+[Le, di1dt, di2dt] = solve([eq1 eq2 eq3], [Le, di1dt, di2dt]);
+
+simplify(Le)
 
 %% Problem 7
 
@@ -169,7 +174,7 @@ grid on;
 xlabel('Day');
 ylabel('Nb of people');
 % I know this is not correct because infection rate sinks immediately
-
+% -> blue and red are correct, just add a given length of the lockdown
 
 %% Problem 8
 
@@ -193,6 +198,11 @@ ylabel('Nb of people');
 
 % but why does it define y (should only be the current) as an array of 3
 % variables?? -> okay got it, its for each of the dx/dt -> dQ/dt, 0, di/dt
+
+
+% correction: there is a bug
+% the equation C*dQ/dt = i is wrong
+
 
 % test the code
 R = 1;
