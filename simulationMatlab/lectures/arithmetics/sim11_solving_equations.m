@@ -146,7 +146,7 @@ eq1 = 10*x1 - 7*x2 + a*x3 == 7;
 eq2 = -3*x1 + 2*x2 + 6*x3 == 4;
 eq3 = 5*x1 -   x2 + 5*x3 == 6;
 [X1, X2, X3] = solve(eq1,eq2,eq3,x1,x2,x3) 
-% for comparions: evaluate a=0
+% for comparisons: evaluate a=0
 subs([X1,X2,X3],a,0)
 
 % transform a system of equations to matrix form

@@ -1,10 +1,10 @@
 function [A0,fn,An] = fftanalyse( data,ts)
-% Fourier analysis (fft) of one period t= 0 to T-dt 
+% Fourier analysis (fft) of one period t= 0 to T-ts 
 % input
-% data 
+% data : exactly one period of the signal
 % ts:   sampling time 
 % output
-% A0:  mean signal 
+% A0:  fundamental component of signal 
 % fn:  frequencies of harmonics
 % An:  amplitudes of harmonics
 % Author: Robert Sattler

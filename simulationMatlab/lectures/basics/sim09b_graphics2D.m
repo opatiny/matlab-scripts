@@ -113,8 +113,21 @@ r2 = x.^2 + y.^2;
 % vector field of H
 Hx= -I./(2*pi*r2).*y;
 Hy=  I./(2*pi*r2).*x;
+
+H = getNorm(Hx, Hy);
+
+% plot magnetic field
+imagesc(X,X,H);
+colormap(jet); % change the colors of the image
+colorbar; % show the color bar (axis)
+clim([0 3]); % clamp to a max value of 40
+
 % draw vector field
-streamslice(x,y,Hx,Hy)
+hold on;
+p = streamslice(x,y,Hx,Hy);
+set(p,'LineWidth', 1)
+set(p,'Color','w');
+hold off;
 axis equal, axis tight
 
 %% vector field 2 (quiver)
