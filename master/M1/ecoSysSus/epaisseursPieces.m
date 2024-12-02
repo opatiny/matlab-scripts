@@ -1,4 +1,4 @@
-%% Etude rigidite robot
+%% Estimation de l'epaisseur min des pieces
 clf; clear; clc;
 
 %% variables
@@ -24,17 +24,6 @@ margin = 0.001; % m
 % constants
 g = 9.81; % m/s
 
-%% calcul rigidite totale structure
-
-vA = sqrt(k_ressort/m)*dx % m/s
-
-dy = 1/2*g*((d+e)/vA)^2 % m
-
-delta = 1/2*(Dt - dy - Db) - margin
-
-Fmax = k_ressort*dx
-
-k_tot = Fmax/delta % N/m -> environ 10'000 N/m
 
 %% calcul epaisseur des plaques -> poutres en flexion
 
