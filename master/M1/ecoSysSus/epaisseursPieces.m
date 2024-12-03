@@ -13,7 +13,7 @@ a = 0.1; % m
 E_al = 69e9; % Pa
 E_ac = 200e9; % Pa
 
-E = E_ac;
+E = E_al;
 
 %% formules
 % epaisseur e
