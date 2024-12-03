@@ -58,11 +58,22 @@ grid on;
 
 %% max kite power
 
-getP = @(vrel, AOA) 1/2*rho*Cl(AOA)*(Cl(AOA)/Cd(AOA))^2.*vrel.^3; % W
+getPlloyd = @(vrel, AOA) 1/2*rho*Cl(AOA)*(Cl(AOA)/Cd(AOA))^2.*vrel.^3; % W
 
-P = getP(vrel_kmh, AOA);
+Plloyd = getPlloyd(vrel, AOA);
 
-disp(['Maximum power: ' num2str(P(end)/1e6, 2) ' MW'])
+disp(['Maximum power Loyd formula: ' num2str(Plloyd(end)/1e6, 2) ' MW'])
+
+% P = F*v
+
+vbat_ms = vbat/3.6;
+
+getP = @(AOA) vbat_ms * D;
+
+P = getP(AOA);
+
+disp(['Maximum power with P = D*v_boat: ' num2str(P(end)/1e6, 2) ' MW'])
+
 
 %% influence of angle of attack
 v = vmax;

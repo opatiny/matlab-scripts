@@ -24,7 +24,7 @@ margin = 0.001; % m
 % constants
 g = 9.81; % m/s
 
-%% calcul rigidite totale structure
+%% calcul force max
 
 vA = sqrt(k_ressort/m)*dx % m/s
 
@@ -35,26 +35,3 @@ delta = 1/2*(Dt - dy - Db) - margin
 Fmax = k_ressort*dx
 
 k_tot = Fmax/delta % N/m -> environ 10'000 N/m
-
-%% calcul epaisseur des plaques -> poutres en flexion
-
-% modules d'Young
-E_al = 69e9; % Pa
-E_ac = 200e9; % Pa
-
-E = E_al;
-
-h = @(L,b) L*(4*k_tot*Fmax/(E*b))^1/3;
-
-% support canon
-
-L = 0.065; % m
-b = 0.025; % m
-
-h_support = h(L,b) % m
-
-% bati
-L = 0.166; % m
-b = 0.2; % m
-
-h_bati = h(L,b) % m

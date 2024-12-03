@@ -75,25 +75,15 @@ hold off;
 grid on;
 xlabel('x [m]')
 ylabel('y [m]')
-legend(['Trajectory with theta' num2str(thetaMin)], ['Trajectory with theta = ' num2str(thetaMax)], 'Acceptable shooting range',...
+legend(['Trajectory with theta = ' num2str(thetaMin)], ['Trajectory with theta = ' num2str(thetaMax)], 'Acceptable shooting range',...
    'Location','southwest');
-
 
 % final precision
 delta = thetaMax; % degrees
 
+%% calcul deformation autorisee de chaque piece
 
-%% calcul rigidite totale structure
+% la deformation angulaire de chaque element doit etre egale
+N = 2; % -, nb elements
 
-Fmax = k_ressort*dx
-
-k_tot = Fmax/delta % N/m -> environ 10'000 N/m
-
-%% calcul epaisseur des plaques -> poutres en flexion
-
-% modules d'Young
-E_al = 69e9; % Pa
-E_ac = 200e9; % Pa
-
-E = E_al;
-
+delta_1piece = delta/N % deg
