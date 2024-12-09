@@ -5,14 +5,15 @@ clf; clear; clc; close all;
 
 L = 0.166; % m, longueur bati
 w = 0.2; % m, largeur bati
-h = 0.001; % m, epaisseur bati
+h = 0.0023; % m, epaisseur bati
 a = 0.1; % m
 
 % modules d'Young
 E_al = 69e9; % Pa
 E_ac = 200e9; % Pa
+E_bois = 13e9; % Pa
 
-E = E_al;
+E = E_bois;
 
 I = w*h^3/12;
 
@@ -40,7 +41,6 @@ y1 = getY1(x1);
 x2 = a:0.001:L;
 y2 = getY2(x2);
 
-
 x = [x1 x2];
 y = [y1 y2];
 
@@ -51,7 +51,6 @@ xlabel('x [m]')
 ylabel('y [m]')
 xline(a);
 grid on;
-
 
 %% calculs de l'angle en a
 
@@ -67,4 +66,6 @@ ypa_est = dy/dx
 % valeur exacte
 
 ypa = -M/(6*E*I*L)*(6*a*L - 2*L^2 - 6*a^2)
+
+theta = rad2deg(atan(ypa))
 

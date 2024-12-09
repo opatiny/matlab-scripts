@@ -75,8 +75,9 @@ hold off;
 grid on;
 xlabel('x [m]')
 ylabel('y [m]')
-legend(['Trajectory with theta = ' num2str(thetaMin)], ['Trajectory with theta = ' num2str(thetaMax)], 'Acceptable shooting range',...
-   'Location','southwest');
+legend(['Trajectory with theta = ' num2str(thetaMin) '°'], ...
+    ['Trajectory with theta = ' num2str(thetaMax) '°'],...
+    'Acceptable shooting range', 'Location','southwest');
 
 % final precision
 delta = thetaMax; % degrees

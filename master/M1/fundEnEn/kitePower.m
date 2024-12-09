@@ -81,7 +81,6 @@ P = getP(AOA);
 
 disp(['Maximum power with P = D*v_boat: ' num2str(P(end)/1e6, 2) ' MW'])
 
-
 %% influence of angle of attack
 v = vrel(end);
 
