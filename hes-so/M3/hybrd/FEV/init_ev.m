@@ -37,8 +37,8 @@ EMp.I_arm_max = 300;          % Max current (A)
 EMp.N_nom = 3120;             % Nominal speed (tr/min)
 EMp.N_max = 12000;            % Maximal speed (tr/min)
 EMp.P_max = 100.0e3;          % Maximal Power (W)
-EMp.T_max = 245;              % MAximal Torque (Nm)
-EMp.K_em = 0.9;               % Coeff for machine magnetisation (Nm/A)
+EMp.T_max = 245;              % Maximal Torque (Nm)
+EMp.K_em = 0.9;               % Default coeff for machine magnetisation (Nm/A)
 EMp.J = 0.20;                 % Rotor Inertia (kg.m^2)
 % --- Armature winding ---
 EMp.R_arm = 0.035;             % Armature resistance (Ohm)
@@ -87,7 +87,13 @@ RDp.f = 0.008;               % Static friction force (N)
 %       - all sensors are considered ideal
 %       - synthesis carried out uninterrupted
 % -------------------------------------------------------------------------
+% motor PI controller
+Kp_imot = 4;
+Ki_imot = 1;
 
+% chassis PI controller
+Kp_chas = 50000;
+Ki_chas = 0;
 
 %% *************************************************************************
 %                         Chassis inversion (CHAi)                        
