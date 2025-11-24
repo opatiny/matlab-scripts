@@ -56,6 +56,9 @@ ICE.gas_dens = 730;
 ICE.Kice = 0.025;
 ICE.Jice = 0.4;
 
+% impose torque and speed
+Oice_ref = 100; % rad/s
+Tice_ref = 10; % Nm
 
 
 %% *************************************************************************
@@ -129,8 +132,8 @@ RegV.Ki = 0;
 %% *************************************************************************
 %                         ICE Inertias INV (CHAi)                        
 % *************************************************************************
-RegTice.Kp = 1000;
-RegTice.Ki = 0;
+RegTr.Kp = 1000;
+RegTr.Ki = 0;
 
 %% *************************************************************************
 %                            TESTS PROFILE (CYCL)
@@ -142,8 +145,10 @@ load WLTP.mat % test profile
 % 			 	     Simulation parameters (SIM)
 % *************************************************************************
 % --- Global simulation ---
+
+SIM.t_simul_def = max(CYCL.time)+10;
 SIM.t_min = 0;                     % Simulation beginning
-SIM.t_simul = max(CYCL.time)+10;  % Simulation end
+SIM.t_simul = 100;   % Simulation end
 
 % *****************************************************************
 % 				   Display of initialization end 
