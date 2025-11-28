@@ -62,11 +62,11 @@ Tice_ref = 10; % Nm
 
 
 %% *************************************************************************
-%                     Power Electronics and Drive - Generator (EDp)                   
+%         Power Electronics and Drive - Generator + redresseur (REDR)                   
 % *************************************************************************
-REDR.eff = 0.98;
-REDR.K_em = 0.9;
-REDR.R_arm = 0.02;
+REDR.eff = 0.98;    % (%)
+REDR.K_em = 0.9;    % (Nm/A)
+REDR.R_arm = 0.02;  % (Ohm)
 
 %% *************************************************************************
 %                     Power Electronics and Drive - Traction (EDp)                   
@@ -132,8 +132,10 @@ RegV.Ki = 0;
 %% *************************************************************************
 %                         ICE Inertias INV (CHAi)                        
 % *************************************************************************
-RegTr.Kp = 1000;
-RegTr.Ki = 0;
+
+% good parameters pairs: P = 100, I = 1 -> Tr_max = 
+RegTr.Kp = 10;
+RegTr.Ki = 1;
 
 %% *************************************************************************
 %                            TESTS PROFILE (CYCL)
@@ -146,9 +148,9 @@ load WLTP.mat % test profile
 % *************************************************************************
 % --- Global simulation ---
 
-SIM.t_simul_def = max(CYCL.time)+10;
-SIM.t_min = 0;                     % Simulation beginning
-SIM.t_simul = 100;   % Simulation end
+t_simul_default = max(CYCL.time)+10; % adapt simulation time on test length
+SIM.t_min = 0;       % Simulation beginning
+SIM.t_simul = 100;   % Simulation end (s) -> modify length of simulation here!
 
 % *****************************************************************
 % 				   Display of initialization end 
