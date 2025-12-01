@@ -27,6 +27,8 @@ BATp.OCV_tot = BATp.OCV*BATp.ns*BATp.Unm;
 
 BATp.initSoC=80/100;        % Battery initial SoC (per unit)
 
+BATp.SoC_min = 20; % (%)
+
 %% *************************************************************************
 %                     ICE Cartography
 % 					Prius_jpn 1.5L (43kW) from FA model and ANL test data'
@@ -36,6 +38,9 @@ BATp.initSoC=80/100;        % Battery initial SoC (per unit)
 ICE.Omega_min = 1000*2*pi/60;   % Required for identifying conditions for cranking the ICE
 ICE.Omega_def = [1000 1250 1500 1750 2000 2250 2500 2750 3000 3250 3500 4000]*2*pi/60; % in rad/s
 ICE.Torque_def = [6.3 12.5 18.8 25.1 31.3 37.6 43.9 50.1 56.4 62.7 68.9 75.2]*1.356;  % in Nm
+
+ICE.Torque_max = ICE.Torque_def(end);
+
 % Fuel consumption in g/s
 ICE.Fuel_consumption = [                        
   0.1513  0.1984  0.2455  0.2925  0.3396  0.3867  0.4338  0.4808  0.5279  0.5279  0.5279  0.5279 % 1
@@ -58,7 +63,7 @@ ICE.Jice = 0.4;
 
 % impose torque and speed
 Oice_ref = 100; % rad/s
-Tice_ref = 10; % Nm
+Tice_ref = ICE.Torque_max; % Nm
 
 
 %% *************************************************************************
@@ -150,7 +155,7 @@ load WLTP.mat % test profile
 
 t_simul_default = max(CYCL.time)+10; % adapt simulation time on test length
 SIM.t_min = 0;       % Simulation beginning
-SIM.t_simul = 100;   % Simulation end (s) -> modify length of simulation here!
+SIM.t_simul = 300;   % Simulation end (s) -> modify length of simulation here!
 
 % *****************************************************************
 % 				   Display of initialization end 
