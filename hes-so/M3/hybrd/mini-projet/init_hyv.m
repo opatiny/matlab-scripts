@@ -21,7 +21,7 @@ BATp.Unm= 4.17;          % Battery maximal voltage in one cell (V)
 BATp.Rcell= 0.0012/2;      % Battery resistance in one cell (Ohm)
 BATp.Cap = BATp.Ccell*BATp.Unm*BATp.ns*BATp.np;
 % OCV= f(SOC) from Kokam @ 25 C 
-BATp.SoC = [0 1.0 4.8 10.0 20.0 30.0 40.0 50.0 60.0 70.0 80.0 90.0 100.0000];                                                      % Battery SoC (%)
+BATp.SoC = [0 1.0 4.8 10.0 20.0 30.0 40.0 50.0 60.0 70.0 80.0 90.0 100.0000]; % Battery SoC (%)
 BATp.OCV = [0.6420 0.7530 0.8040 0.8230 0.8420 0.8570 0.8680 0.8780 0.8910 0.905 0.92 0.94 1.0000]; % Battery OCV (per unit)
 BATp.OCV_tot = BATp.OCV*BATp.ns*BATp.Unm;
 
@@ -42,6 +42,7 @@ ICE.Torque_def = [6.3 12.5 18.8 25.1 31.3 37.6 43.9 50.1 56.4 62.7 68.9 75.2]*1.
 ICE.Torque_max = ICE.Torque_def(end);
 
 % Fuel consumption in g/s
+% columns: increasing omega, rows: increasing torque???
 ICE.Fuel_consumption = [                        
   0.1513  0.1984  0.2455  0.2925  0.3396  0.3867  0.4338  0.4808  0.5279  0.5279  0.5279  0.5279 % 1
   0.1834  0.2423  0.3011  0.3599  0.4188  0.4776  0.5365  0.5953  0.6541  0.6689  0.6689  0.6689 % 2 
