@@ -40,6 +40,7 @@ ICE.Omega_def = [1000 1250 1500 1750 2000 2250 2500 2750 3000 3250 3500 4000]*2*
 ICE.Torque_def = [6.3 12.5 18.8 25.1 31.3 37.6 43.9 50.1 56.4 62.7 68.9 75.2]*1.356;  % in Nm
 
 ICE.Torque_max = ICE.Torque_def(end);
+ICE.Omega_max = ICE.Omega_def(end);
 
 % Fuel consumption in g/s
 % columns: increasing omega, rows: increasing torque???
@@ -61,10 +62,6 @@ ICE.gas_dens = 730;
 % Inertias and Friction
 ICE.Kice = 0.025;
 ICE.Jice = 0.4;
-
-% impose torque and speed
-Oice_ref = 100; % rad/s
-Tice_ref = ICE.Torque_max; % Nm
 
 
 %% *************************************************************************
