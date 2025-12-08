@@ -10,11 +10,13 @@
 clear; close all; clc
 
 %% Test in full electic mode
+disp('Test fully electric mode')
+
 load WLTP.mat % test profile
 BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
+BATp.SOC_min = 20;
 Test_Elec = 1;
-SOC_min = 20;
-SOC_min_stop = SOC_min;
+SOC_min_stop = BATp.SOC_min;
 
 SIM.t_min = 0;                     % Simulation beginning
 SIM.t_simul = 10*(max(CYCL.time)+10);  % Simulation end
@@ -26,8 +28,12 @@ Perf.Time = Time_Final;
 Perf.Distance = Distance_Final/1000;
 Perf.kWh_batt = kWh_Final;
 
+disp(Perf);
+
 
 %% Test in depletion mode
+disp('Test depletion mode')
+
 load WLTP.mat % test profile
 BATp.initSoC = 5/100;        % Battery initial SoC (per unit)
 Test_Elec = 0;
@@ -51,6 +57,8 @@ disp(Perf)
 
 
 %% Test on road
+disp('Test real life mode')
+
 load VD_FR.mat % test profile
 BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
 Test_Elec = 0;
