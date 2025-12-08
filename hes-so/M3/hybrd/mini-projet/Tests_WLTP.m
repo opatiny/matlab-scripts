@@ -11,8 +11,8 @@ clear; close all; clc
 
 %% Test in full electic mode
 load WLTP.mat % test profile
-BATp.initSoC=100/100;        % Battery initial SoC (per unit)
-Test_Elec =1;
+BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
+Test_Elec = 1;
 SOC_min = 20;
 SOC_min_stop = SOC_min;
 
@@ -29,7 +29,7 @@ Perf.kWh_batt = kWh_Final;
 
 %% Test in depletion mode
 load WLTP.mat % test profile
-BATp.initSoC=5/100;        % Battery initial SoC (per unit)
+BATp.initSoC = 5/100;        % Battery initial SoC (per unit)
 Test_Elec = 0;
 SOC_min = 20;
 SOC_min_stop = 2;
@@ -38,7 +38,6 @@ SIM.t_min = 0;                     % Simulation beginning
 SIM.t_simul = (max(CYCL.time)+10);  % Simulation end
 
 sim('HYV_EMR_IBC_Macro.slx');
-
 
 
 Perf.Time = [Perf.Time Time_Final];
@@ -53,8 +52,8 @@ disp(Perf)
 
 %% Test on road
 load VD_FR.mat % test profile
-BATp.initSoC=100/100;        % Battery initial SoC (per unit)
-Test_Elec =0;
+BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
+Test_Elec = 0;
 SOC_min = 20;
 SOC_min_stop = 2;
 
