@@ -10,8 +10,6 @@ clear; close all; clc
 init_hyv;
 load WLTP.mat % test profile
 
-ptab = load('power_lookup_table.mat')
-
 %% set test parameters
 BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
 SOC_min_stop = BATp.SOC_min;

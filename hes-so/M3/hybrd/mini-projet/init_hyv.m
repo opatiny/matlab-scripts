@@ -8,11 +8,7 @@
 %       Adaptated P. Barrade :         October 2022 - October 2025
 %
 % -------------------------------------------------------------------------
-% clc; clear; close all; % comment this line to run simulink script from
-% matlab script
-
-%% is the simulation run in simulink?
-SIMULINK = 1;
+clc; clear; close all;
 
 %% *************************************************************************
 %                     Battery Parameters                
@@ -28,9 +24,7 @@ BATp.SoC = [0 1.0 4.8 10.0 20.0 30.0 40.0 50.0 60.0 70.0 80.0 90.0 100.0000]; % 
 BATp.OCV = [0.6420 0.7530 0.8040 0.8230 0.8420 0.8570 0.8680 0.8780 0.8910 0.905 0.92 0.94 1.0000]; % Battery OCV (per unit)
 BATp.OCV_tot = BATp.OCV*BATp.ns*BATp.Unm;
 
-if SIMULINK
-    BATp.initSoC=80/100;        % Battery initial SoC (per unit)
-end
+BATp.initSoC=80/100;        % Battery initial SoC (per unit)
 
 BATp.SOC_min = 20; % (%)
 BATp.SOC_max = 90; % (%)
