@@ -34,6 +34,7 @@ end
 
 BATp.SOC_min = 20; % (%)
 BATp.SOC_max = 90; % (%)
+SOC_min_stop = 2; % (%)
 
 
 %% *************************************************************************
@@ -70,6 +71,7 @@ ICE.gas_dens = 730;
 ICE.Kice = 0.025;
 ICE.Jice = 0.4;
 
+Test_Elec = 0; % fully electric mode, thermal motor off
 
 %% *************************************************************************
 %         Power Electronics and Drive - Generator + redresseur (REDR)                   
@@ -150,7 +152,7 @@ RegTr.Ki = 1;
 %% *************************************************************************
 %                            TESTS PROFILE (CYCL)
 % *************************************************************************
-% load WLTP.mat % test profile
+load WLTP.mat % test profile
 
 
 % *************************************************************************
@@ -158,16 +160,16 @@ RegTr.Ki = 1;
 % *************************************************************************
 % --- Global simulation ---
 
-% t_simul_default = max(CYCL.time)+10; % adapt simulation time to test length
-% SIM.t_min = 0;       % Simulation beginning
-% SIM.t_simul = 300;   % Simulation end (s) -> modify length of simulation here!
+t_simul_default = max(CYCL.time)+10; % adapt simulation time to test length
+SIM.t_min = 0;       % Simulation beginning
+SIM.t_simul = 300;   % Simulation end (s) -> modify length of simulation here!
 
 % *****************************************************************
 % 				   Display of initialization end 
 % *****************************************************************
 
-% disp(' ');
-% disp('****** Initialisation  ******');
-% disp('******  completed          ******');
-% disp(' ');
+disp(' ');
+disp('****** Initialisation  ******');
+disp('******  completed          ******');
+disp(' ');
 

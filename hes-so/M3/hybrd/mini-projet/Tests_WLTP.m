@@ -15,7 +15,7 @@ disp('Test fully electric mode')
 load WLTP.mat % test profile
 BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
 BATp.SOC_min = 20;
-Test_Elec = 1;
+Test_Elec = 1; % fully electric mode, thermal motor off
 SOC_min_stop = BATp.SOC_min;
 
 SIM.t_min = 0;                     % Simulation beginning
