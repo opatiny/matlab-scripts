@@ -46,7 +46,7 @@ ICE.Omega_max = ICE.Omega_def(end);
 
 % Fuel consumption in g/s
 % columns: increasing omega, rows: increasing torque???
-ICE.Fuel_consumption = [                        
+ICE.Fuel_consumption = [
   0.1513  0.1984  0.2455  0.2925  0.3396  0.3867  0.4338  0.4808  0.5279  0.5279  0.5279  0.5279 % 1
   0.1834  0.2423  0.3011  0.3599  0.4188  0.4776  0.5365  0.5953  0.6541  0.6689  0.6689  0.6689 % 2 
   0.2145  0.2851  0.3557  0.4263  0.4969  0.5675  0.6381  0.7087  0.7793  0.8146  0.8146  0.8146 % 3
@@ -141,7 +141,7 @@ RegV.Ki = 0;
 
 % good parameters pairs: P = 100, I = 1 -> Tr_max = 
 RegTr.Kp = 1;
-RegTr.Ki = 0.05;
+RegTr.Ki = 0;
 
 %% *************************************************************************
 %                            TESTS PROFILE (CYCL)

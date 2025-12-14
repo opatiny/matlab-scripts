@@ -22,8 +22,18 @@ zlabel("Consumption (g/s)")
 % compute power
 P = omega'* torque;
 
+efficiency = conso./P;
+
+figure(1)
+surf(omega,torque,conso./P)
+xlabel("Omega (rad/s)")
+ylabel("Torque (Nm)")
+zlabel("conso/power")
+
+
+
 % add legend
-nbCurves = size(P,2)
+nbCurves = size(P,2);
 
 legendDataT = [];
 legendDataO = [];
@@ -56,10 +66,11 @@ title("Fuel consumption curves for constant torques")
 
 
 %% Compute points with min conso for an array of powers
+nbPoints = 10;
 
 Plim = 10600; % W
 
-P_ref = (1:43)*1000; % W
+P_ref = (1:nbPoints)*43000/nbPoints; % W
 
 % find limit index
 index = find(P_ref > Plim, 1);
@@ -83,6 +94,8 @@ table.omega = [omega_ref1 omega_ref2];
 table.T = [torque_ref1 torque_ref2];
 
 save('power_lookup_table.mat', 'table')
+
+table
 
 %% check where our points lie in plot
 
@@ -110,5 +123,5 @@ hold off;
 grid on
 xlabel("Power (W)")
 ylabel("Consumption (g/s)")
-legend([legendDataT 'Optimal torque/speed pairs'], "Location", "southeast")
+legend([legendDataT 'Optimal points'], "Location", "southeast")
 % title("Fuel consumption curves for constant torques")
