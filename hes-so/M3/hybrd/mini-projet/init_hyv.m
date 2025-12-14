@@ -139,8 +139,8 @@ RegV.Ki = 0;
 %                         ICE Inertias INV (CHAi)                        
 % *************************************************************************
 
-% good parameters pairs: P = 100, I = 1 -> Tr_max = 
-RegTr.Kp = 1;
+% good parameters pairs: P = 1, I = 0
+RegTr.Kp = 1.5;
 RegTr.Ki = 0;
 
 %% *************************************************************************
@@ -154,9 +154,9 @@ load WLTP.mat % test profile
 % *************************************************************************
 % --- Global simulation ---
 
-t_simul_default = max(CYCL.time)+10; % adapt simulation time to test length
+tdef = max(CYCL.time)+10; % adapt simulation time to test length
 SIM.t_min = 0;       % Simulation beginning
-SIM.t_simul = 300;   % Simulation end (s) -> modify length of simulation here!
+SIM.t_simul = tdef;   % Simulation end (s) -> modify length of simulation here!
 
 % *****************************************************************
 % 				   Display of initialization end 
