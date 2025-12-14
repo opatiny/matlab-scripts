@@ -8,7 +8,12 @@
 %       Adaptated P. Barrade :         October 2022 - October 2025
 %
 % -------------------------------------------------------------------------
-clc; clear; close all;
+SIMULINK = 0;
+
+if SIMULINK
+    clc; clear; close all;
+end
+
 
 %% *************************************************************************
 %                     Battery Parameters                
@@ -24,12 +29,13 @@ BATp.SoC = [0 1.0 4.8 10.0 20.0 30.0 40.0 50.0 60.0 70.0 80.0 90.0 100.0000]; % 
 BATp.OCV = [0.6420 0.7530 0.8040 0.8230 0.8420 0.8570 0.8680 0.8780 0.8910 0.905 0.92 0.94 1.0000]; % Battery OCV (per unit)
 BATp.OCV_tot = BATp.OCV*BATp.ns*BATp.Unm;
 
-BATp.initSoC=80/100;        % Battery initial SoC (per unit)
+if SIMULINK
+    BATp.initSoC=80/100;        % Battery initial SoC (per unit)
 
-BATp.SOC_max = 81; % (%)
-BATp.SOC_min = 79.5; % (%)
-SOC_min_stop = 78; % (%)
-
+    BATp.SOC_max = 90; % (%)
+    BATp.SOC_min = 20; % (%)
+    SOC_min_stop = 2; % (%)
+end
 
 %% *************************************************************************
 %                     ICE Cartography
@@ -143,27 +149,28 @@ RegV.Ki = 0;
 RegTr.Kp = 1.5;
 RegTr.Ki = 0;
 
-%% *************************************************************************
-%                            TESTS PROFILE (CYCL)
-% *************************************************************************
-load WLTP.mat % test profile
-
-
-% *************************************************************************
-% 			 	     Simulation parameters (SIM)
-% *************************************************************************
-% --- Global simulation ---
-
-tdef = max(CYCL.time)+10; % adapt simulation time to test length
-SIM.t_min = 0;       % Simulation beginning
-SIM.t_simul = tdef;   % Simulation end (s) -> modify length of simulation here!
-
-% *****************************************************************
-% 				   Display of initialization end 
-% *****************************************************************
-
-disp(' ');
-disp('****** Initialisation  ******');
-disp('******  completed          ******');
-disp(' ');
-
+if SIMULINK
+    %% *************************************************************************
+    %                            TESTS PROFILE (CYCL)
+    % *************************************************************************
+    load WLTP.mat % test profile
+    
+    
+    % *************************************************************************
+    % 			 	     Simulation parameters (SIM)
+    % *************************************************************************
+    % --- Global simulation ---
+    
+    tdef = max(CYCL.time)+10; % adapt simulation time to test length
+    SIM.t_min = 0;       % Simulation beginning
+    SIM.t_simul = tdef;   % Simulation end (s) -> modify length of simulation here!
+    
+    % *****************************************************************
+    % 				   Display of initialization end 
+    % *****************************************************************
+    
+    disp(' ');
+    disp('****** Initialisation  ******');
+    disp('******  completed          ******');
+    disp(' ');
+end
