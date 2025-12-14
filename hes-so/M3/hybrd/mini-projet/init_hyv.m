@@ -26,9 +26,9 @@ BATp.OCV_tot = BATp.OCV*BATp.ns*BATp.Unm;
 
 BATp.initSoC=80/100;        % Battery initial SoC (per unit)
 
-BATp.SOC_min = 20; % (%)
-BATp.SOC_max = 90; % (%)
-SOC_min_stop = 2; % (%)
+BATp.SOC_max = 81; % (%)
+BATp.SOC_min = 79.5; % (%)
+SOC_min_stop = 78; % (%)
 
 
 %% *************************************************************************
