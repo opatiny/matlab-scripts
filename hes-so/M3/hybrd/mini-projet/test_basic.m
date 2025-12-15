@@ -11,8 +11,10 @@ init_hyv;
 load WLTP.mat % test profile
 
 %% set test parameters
-BATp.initSoC = 100/100;        % Battery initial SoC (per unit)
-SOC_min_stop = BATp.SOC_min;
+BATp.initSoC=80/100;        % Battery initial SoC (per unit)
+BATp.SOC_max = 90; % (%)
+BATp.SOC_min = 80; % (%)
+SOC_min_stop = 2;
 
 Test_Elec = 1;
 
@@ -24,7 +26,7 @@ SIM.t_simul = 300;  % Simulation end
 sim('HYV_EMR_IBC_Macro.slx');
 
 Perf.Time = Time_Final;
-Perf.Distance = Distance_Final/1000;
+Perf.Distance = Distance_Final;
 Perf.kWh_batt = kWh_Final;
 Perf.Fuel_liter = Liter_Final;
 Perf.SOC = SOC_Final;

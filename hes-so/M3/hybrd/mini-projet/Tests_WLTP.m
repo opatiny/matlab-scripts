@@ -58,7 +58,8 @@ Perf.kWh_batt = [Perf.kWh_batt kWh_Final];
 Perf.Conso_elec = [100*Perf.kWh_batt(1)/Perf.Distance(1) 100*sum(Perf.kWh_batt)/sum(Perf.Distance)]; % kWh/100km
 Perf_Fuel_liter = [0 Liter_Final];
 Perf.Fuel_Conso = [ 0 100*Liter_Final/sum(Perf.Distance) 100*Liter_Final/sum(Perf.Distance)*(1-Perf.Time(2)/sum(Perf.Time))];
-% 2: , 3: weighted by fraction of time spent in depletion mode
+% 2: , 3: weighted by fraction of time spent in depletion mode -> average
+% consumption on all km donce (full elec + depletion)
 
 disp(Perf)
 
